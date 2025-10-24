@@ -37,8 +37,66 @@
     </section>
 
     <footer class="foot">This demo runs in <strong>MOCK</strong> mode — no API or cost. Replace with a real API when ready.</footer>
+<section class="pricing">
+  <h2>Choose Your Plan</h2>
+  <div class="plans">
+    <div class="plan">
+      <h3>Free</h3>
+      <p>10 AI generations/day</p>
+      <button disabled>Current Plan</button>
+    </div>
+    <div class="plan featured">
+      <h3>Pro ₹299/mo</h3>
+      <p>Unlimited writing + premium support</p>
+      <button id="buyPro">Buy Now</button>
+    </div>
+    <div class="plan">
+      <h3>Lifetime ₹999</h3>
+      <p>One-time payment, lifetime access</p>
+      <button id="buyLife">Buy Now</button>
+    </div>
+  </div>
+</section>
+
   </main>
 
   <script src="script.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+const razorpayKey = "rzp_test_XXXXXXXX"; // <-- replace with your test key_id
+
+function openCheckout(amount, description) {
+  var options = {
+    key: razorpayKey,
+    amount: amount * 100, // in paise
+    currency: "INR",
+    name: "WordMate",
+    description: description,
+    image: "https://yourdomain.vercel.app/icon.png", // optional
+    handler: function (response) {
+      alert("✅ Payment successful! Payment ID: " + response.razorpay_payment_id);
+    },
+    prefill: {
+      name: "Test User",
+      email: "test@example.com",
+      contact: "9999999999"
+    },
+    theme: {
+      color: "#7c5cff"
+    }
+  };
+  var rzp1 = new Razorpay(options);
+  rzp1.open();
+}
+
+document.getElementById("buyPro").addEventListener("click", () => {
+  openCheckout(299, "WordMate Pro Plan");
+});
+
+document.getElementById("buyLife").addEventListener("click", () => {
+  openCheckout(999, "WordMate Lifetime Plan");
+});
+</script>
+
 </body>
 </html>
