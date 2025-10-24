@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WordMate — AI Writing Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1>WordMate</h1>
+      <p class="tagline">AI that writes for you in seconds.</p>
+    </header>
+
+    <section class="app">
+      <div class="controls">
+        <select id="type">
+          <option value="blog">Blog Post</option>
+          <option value="email">Email</option>
+          <option value="ad">Ad Copy</option>
+          <option value="summary">Summary</option>
+        </select>
+        <button id="generateBtn">Generate</button>
+      </div>
+
+      <textarea id="prompt" placeholder="Enter your brief / prompt here..."></textarea>
+
+      <div class="output-area">
+        <h3>Output</h3>
+        <pre id="output" class="output">Press Generate to see a mock result (zero cost).</pre>
+        <div class="output-actions">
+          <button id="copyBtn">Copy</button>
+          <button id="downloadBtn">Download</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">This demo runs in <strong>MOCK</strong> mode — no API or cost. Replace with a real API when ready.</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
